@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apollo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        header {
+            background-color: #333;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+        header h1 {
+            margin: 0;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        nav ul li {
+            margin-right: 10px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        #search-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        #search-input {
+            width: 50%;
+            padding: 10px;
+        }
+        #video-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-gap: 10px;
+            padding: 10px;
+        }
+        .video {
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+        .video h3 {
+            margin: 0 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Apollo</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Trending</a></li>
+                <li><a href="#">Categories</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div id="search-container">
+        <input id="search-input" type="text" placeholder="Search videos...">
+    </div>
+    <div id="video-section">
+        <!-- Video cards will be appended here -->
+    </div>
+
+    <script>
+        const videoData = [
+            { title: 'Video 1', thumbnail: 'https://via.placeholder.com/150' },
+            { title: 'Video 2', thumbnail: 'https://via.placeholder.com/150' },
+            { title: 'Video 3', thumbnail: 'https://via.placeholder.com/150' },
+            { title: 'Video 4', thumbnail: 'https://via.placeholder.com/150' },
+            { title: 'Video 5', thumbnail: 'https://via.placeholder.com/150' },
+        ];
+
+        const videoSection = document.querySelector('#video-section');
+
+        function createVideoCard(video) {
+            const videoCard = document.createElement('div');
+            videoCard.classList.add('video');
+
+            const thumbnail = document.createElement('img');
+            thumbnail.src = video.thumbnail;
+
+            const title = document.createElement('h3');
+            title.innerText = video.title;
+
+            videoCard.appendChild(thumbnail);
+            videoCard.appendChild(title);
+
+            return videoCard;
+        }
+
+        videoData.forEach(video => {
+            const videoCard = createVideoCard(video);
+            videoSection.appendChild(videoCard);
+        });
+    </script>
+</body>
+</html>
